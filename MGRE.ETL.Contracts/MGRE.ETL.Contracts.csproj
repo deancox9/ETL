@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2C2C4A47-570C-42F9-AEF1-93E62DB74F31}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MGRE.ETL.Contracts</RootNamespace>
+    <AssemblyName>MGRE.ETL.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataContracts\DualAppShortcutSetting.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\vw_FundsAndProperties.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DualAppShortcutSetting.cs" />
+    <Compile Include="ETLImportEmail.cs" />
+    <Compile Include="ETLImportHistory.cs" />
+    <Compile Include="ETLImportTablesDefinition.cs" />
+    <Compile Include="ETLImportDefinition.cs" />
+    <Compile Include="DataContracts\ETLImportDefinition.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLImportEmail.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLImportHistory.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLImportTablesDefinition.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ETLImportConfiguration.cs" />
+    <Compile Include="DataContracts\ETLExportEmail.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLImportConfiguration.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ETLExportEmail.cs" />
+    <Compile Include="ETLPeriodicity.cs" />
+    <Compile Include="ETLExportTablesDefinition.cs" />
+    <Compile Include="ETLExportSchedule.cs" />
+    <Compile Include="DataContracts\ETL.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLExportConfiguration.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLExportDefinition.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLExportHistory.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLExportSchedule.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLExportTablesDefinition.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\ETLPeriodicity.cs">
+      <DependentUpon>ETL.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ETLExportConfiguration.cs" />
+    <Compile Include="ETLExportDefinition.cs" />
+    <Compile Include="ETLExportHistory.cs" />
+    <Compile Include="IEntityValidate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="vw_FundsAndProperties.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MGRE.ETL.Common\MGRE.ETL.Common.csproj">
+      <Project>{094250E2-F83D-4A8A-9AA4-E2132FB86F02}</Project>
+      <Name>MGRE.ETL.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataContracts\ETL.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ETL.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
