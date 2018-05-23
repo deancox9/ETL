@@ -1,0 +1,957 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HUBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="HUBModelStoreContainer">
+          <EntitySet Name="DualAppShortcutSettings" EntityType="HUBModel.Store.DualAppShortcutSettings" store:Type="Tables" store:Schema="dbo" store:Name="DualAppShortcutSettings">
+            <DefiningQuery>SELECT 
+      [DualAppShortcutSettings].[AppID] AS [AppID], 
+      [DualAppShortcutSettings].[WindowTitle] AS [WindowTitle], 
+      [DualAppShortcutSettings].[WindowBackgroundColour] AS [WindowBackgroundColour], 
+      [DualAppShortcutSettings].[WindowBorderColor] AS [WindowBorderColor], 
+      [DualAppShortcutSettings].[PrimeButtonBackgroundColor] AS [PrimeButtonBackgroundColor], 
+      [DualAppShortcutSettings].[HeaderTextColor] AS [HeaderTextColor], 
+      [DualAppShortcutSettings].[PrimeTextColor] AS [PrimeTextColor], 
+      [DualAppShortcutSettings].[YardiTextColor] AS [YardiTextColor], 
+      [DualAppShortcutSettings].[HeaderText] AS [HeaderText], 
+      [DualAppShortcutSettings].[PrimeButtonText] AS [PrimeButtonText], 
+      [DualAppShortcutSettings].[YardiButtonText] AS [YardiButtonText], 
+      [DualAppShortcutSettings].[YardiButtonBackgroundColor] AS [YardiButtonBackgroundColor], 
+      [DualAppShortcutSettings].[YardiButtonEnabled] AS [YardiButtonEnabled], 
+      [DualAppShortcutSettings].[PrimeButtonEnabled] AS [PrimeButtonEnabled]
+      FROM [dbo].[DualAppShortcutSettings] AS [DualAppShortcutSettings]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ETLExportConfiguration" EntityType="HUBModel.Store.ETLExportConfiguration" store:Type="Tables" store:Schema="dbo" store:Name="ETLExportConfiguration">
+            <DefiningQuery>SELECT 
+      [ETLExportConfiguration].[ETLExportDirectoryLocation] AS [ETLExportDirectoryLocation], 
+      [ETLExportConfiguration].[AvailabillityIndicator] AS [AvailabillityIndicator]
+      FROM [dbo].[ETLExportConfiguration] AS [ETLExportConfiguration]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ETLExportDefinition" EntityType="HUBModel.Store.ETLExportDefinition" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLExportEmail" EntityType="HUBModel.Store.ETLExportEmail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLExportHistory" EntityType="HUBModel.Store.ETLExportHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLExportSchedule" EntityType="HUBModel.Store.ETLExportSchedule" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLExportTablesDefinition" EntityType="HUBModel.Store.ETLExportTablesDefinition" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLImportConfiguration" EntityType="HUBModel.Store.ETLImportConfiguration" store:Type="Tables" store:Schema="dbo" store:Name="ETLImportConfiguration">
+            <DefiningQuery>SELECT 
+      [ETLImportConfiguration].[ETLImportDirectoryLocation] AS [ETLImportDirectoryLocation], 
+      [ETLImportConfiguration].[AvailabillityIndicator] AS [AvailabillityIndicator]
+      FROM [dbo].[ETLImportConfiguration] AS [ETLImportConfiguration]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ETLImportDefinition" EntityType="HUBModel.Store.ETLImportDefinition" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLImportEmail" EntityType="HUBModel.Store.ETLImportEmail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLImportHistory" EntityType="HUBModel.Store.ETLImportHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLImportTablesDefinition" EntityType="HUBModel.Store.ETLImportTablesDefinition" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ETLPeriodicity" EntityType="HUBModel.Store.ETLPeriodicity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vw_FundsAndProperties" EntityType="HUBModel.Store.vw_FundsAndProperties" store:Type="Views" store:Schema="dbo" store:Name="vw_FundsAndProperties">
+            <DefiningQuery>SELECT 
+      [vw_FundsAndProperties].[ID] AS [ID], 
+      [vw_FundsAndProperties].[Name] AS [Name], 
+      [vw_FundsAndProperties].[Migrated] AS [Migrated]
+      FROM [dbo].[vw_FundsAndProperties] AS [vw_FundsAndProperties]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ETLExportDefinition_ETLExportSchedule" Association="HUBModel.Store.FK_ETLExportDefinition_ETLExportSchedule">
+            <End Role="ETLExportSchedule" EntitySet="ETLExportSchedule" />
+            <End Role="ETLExportDefinition" EntitySet="ETLExportDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLExportEmail_ETLExportDefinition" Association="HUBModel.Store.FK_ETLExportEmail_ETLExportDefinition">
+            <End Role="ETLExportDefinition" EntitySet="ETLExportDefinition" />
+            <End Role="ETLExportEmail" EntitySet="ETLExportEmail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLExportHistory_ETLExportDefinition" Association="HUBModel.Store.FK_ETLExportHistory_ETLExportDefinition">
+            <End Role="ETLExportDefinition" EntitySet="ETLExportDefinition" />
+            <End Role="ETLExportHistory" EntitySet="ETLExportHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLExportSchedule_ETLPeriodicity" Association="HUBModel.Store.FK_ETLExportSchedule_ETLPeriodicity">
+            <End Role="ETLPeriodicity" EntitySet="ETLPeriodicity" />
+            <End Role="ETLExportSchedule" EntitySet="ETLExportSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLExportTablesDefinition_ETLExportDefinition" Association="HUBModel.Store.FK_ETLExportTablesDefinition_ETLExportDefinition">
+            <End Role="ETLExportDefinition" EntitySet="ETLExportDefinition" />
+            <End Role="ETLExportTablesDefinition" EntitySet="ETLExportTablesDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLImportEmail_ETLImportDefinition" Association="HUBModel.Store.FK_ETLImportEmail_ETLImportDefinition">
+            <End Role="ETLImportDefinition" EntitySet="ETLImportDefinition" />
+            <End Role="ETLImportEmail" EntitySet="ETLImportEmail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLImportHistory_ETLImportDefinition" Association="HUBModel.Store.FK_ETLImportHistory_ETLImportDefinition">
+            <End Role="ETLImportDefinition" EntitySet="ETLImportDefinition" />
+            <End Role="ETLImportHistory" EntitySet="ETLImportHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLImportTablesDefinition_ETLImportDefinition" Association="HUBModel.Store.FK_ETLImportTablesDefinition_ETLImportDefinition">
+            <End Role="ETLImportDefinition" EntitySet="ETLImportDefinition" />
+            <End Role="ETLImportTablesDefinition" EntitySet="ETLImportTablesDefinition" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'HUB.dbo.DualAppShortcutSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DualAppShortcutSettings">
+          <Key>
+            <PropertyRef Name="AppID" />
+            <PropertyRef Name="WindowTitle" />
+            <PropertyRef Name="WindowBackgroundColour" />
+            <PropertyRef Name="WindowBorderColor" />
+            <PropertyRef Name="PrimeButtonBackgroundColor" />
+            <PropertyRef Name="HeaderTextColor" />
+            <PropertyRef Name="PrimeTextColor" />
+            <PropertyRef Name="YardiTextColor" />
+            <PropertyRef Name="HeaderText" />
+            <PropertyRef Name="PrimeButtonText" />
+            <PropertyRef Name="YardiButtonText" />
+            <PropertyRef Name="YardiButtonBackgroundColor" />
+            <PropertyRef Name="YardiButtonEnabled" />
+            <PropertyRef Name="PrimeButtonEnabled" />
+          </Key>
+          <Property Name="AppID" Type="int" Nullable="false" />
+          <Property Name="WindowTitle" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="WindowBackgroundColour" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="WindowBorderColor" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PrimeButtonBackgroundColor" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="HeaderTextColor" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PrimeTextColor" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="YardiTextColor" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="HeaderText" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="PrimeButtonText" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="YardiButtonText" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="YardiButtonBackgroundColor" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="YardiButtonEnabled" Type="bit" Nullable="false" />
+          <Property Name="PrimeButtonEnabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'HUB.dbo.ETLExportConfiguration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ETLExportConfiguration">
+          <Key>
+            <PropertyRef Name="ETLExportDirectoryLocation" />
+            <PropertyRef Name="AvailabillityIndicator" />
+          </Key>
+          <Property Name="ETLExportDirectoryLocation" Type="varchar(max)" Nullable="false" />
+          <Property Name="AvailabillityIndicator" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETLExportDefinition">
+          <Key>
+            <PropertyRef Name="ETLExportGUID" />
+          </Key>
+          <Property Name="ETLExportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ApplicationDatabase" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExportName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExportSubDirectory" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Reason" Type="varchar(max)" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ExportType" Type="int" Nullable="false" />
+          <Property Name="StatusProcedureName" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ETLExportEmail">
+          <Key>
+            <PropertyRef Name="ETLEmailGUID" />
+          </Key>
+          <Property Name="ETLEmailGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLExportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="120" />
+          <Property Name="Body" Type="ntext" />
+          <Property Name="ToAssignees" Type="varchar" MaxLength="200" />
+          <Property Name="CCAssignees" Type="varchar" MaxLength="200" />
+          <Property Name="BCCAssignees" Type="varchar" MaxLength="200" />
+          <Property Name="FromAddress" Type="varchar" MaxLength="100" />
+          <Property Name="EmailIsDataSpecific" Type="bit" Nullable="false" />
+          <Property Name="ProcedureName" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ETLExportHistory">
+          <Key>
+            <PropertyRef Name="ETLExportHistoryGUID" />
+          </Key>
+          <Property Name="ETLExportHistoryGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLExportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLExportDate" Type="datetime" Nullable="false" />
+          <Property Name="ETLExportSubmittedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ETLExportStartDate" Type="datetime" Nullable="false" />
+          <Property Name="ETLExportEndDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETLExportSchedule">
+          <Key>
+            <PropertyRef Name="ETLExportGUID" />
+          </Key>
+          <Property Name="ETLExportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLExportStartDate" Type="datetime" Nullable="false" />
+          <Property Name="ETLExportPeriodicity" Type="int" Nullable="false" />
+          <Property Name="ETLTime1" Type="time" Nullable="false" />
+          <Property Name="ETLTime2" Type="time" />
+          <Property Name="ETLTime3" Type="time" />
+          <Property Name="ETLTime4" Type="time" />
+        </EntityType>
+        <EntityType Name="ETLExportTablesDefinition">
+          <Key>
+            <PropertyRef Name="ETLExportTableGUID" />
+          </Key>
+          <Property Name="ETLExportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLExportTableGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TableName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ETLFileName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ETLHeaderName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProcedureName" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'HUB.dbo.ETLImportConfiguration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="ETLImportConfiguration">
+          <Key>
+            <PropertyRef Name="ETLImportDirectoryLocation" />
+            <PropertyRef Name="AvailabillityIndicator" />
+          </Key>
+          <Property Name="ETLImportDirectoryLocation" Type="varchar(max)" Nullable="false" />
+          <Property Name="AvailabillityIndicator" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETLImportDefinition">
+          <Key>
+            <PropertyRef Name="ETLImportGUID" />
+          </Key>
+          <Property Name="ETLImportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ImportName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ImportSubDirectory" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Reason" Type="varchar(max)" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ImportType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETLImportEmail">
+          <Key>
+            <PropertyRef Name="ETLEmailGUID" />
+          </Key>
+          <Property Name="ETLEmailGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLImportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="120" />
+          <Property Name="Body" Type="ntext" />
+          <Property Name="ToAssignees" Type="varchar" MaxLength="200" />
+          <Property Name="CCAssignees" Type="varchar" MaxLength="200" />
+          <Property Name="BCCAssignees" Type="varchar" MaxLength="200" />
+          <Property Name="FromAddress" Type="varchar" MaxLength="100" />
+          <Property Name="EmailIsDataSpecific" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETLImportHistory">
+          <Key>
+            <PropertyRef Name="ETLImportHistoryGUID" />
+          </Key>
+          <Property Name="ETLImportHistoryGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLImportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLImportDate" Type="datetime" Nullable="false" />
+          <Property Name="ETLImportSubmittedBy" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ETLImportStartDate" Type="datetime" Nullable="false" />
+          <Property Name="ETLImportEndDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETLImportTablesDefinition">
+          <Key>
+            <PropertyRef Name="ETLImportTableGUID" />
+          </Key>
+          <Property Name="ETLImportGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ETLImportTableGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TableName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ETLFileName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ETLHeaderName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="SelectProcedureName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="InsertProcedureName" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="LineDataStarts" Type="int" Nullable="false" />
+          <Property Name="FooterLineCount" Type="int" Nullable="false" />
+          <Property Name="DeleteProcedureName" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ETLPeriodicity">
+          <Key>
+            <PropertyRef Name="PeriodID" />
+          </Key>
+          <Property Name="PeriodID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'HUB.dbo.vw_FundsAndProperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vw_FundsAndProperties">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Migrated" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="10" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="Migrated" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ETLExportDefinition_ETLExportSchedule">
+          <End Role="ETLExportSchedule" Type="HUBModel.Store.ETLExportSchedule" Multiplicity="1" />
+          <End Role="ETLExportDefinition" Type="HUBModel.Store.ETLExportDefinition" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ETLExportSchedule">
+              <PropertyRef Name="ETLExportGUID" />
+            </Principal>
+            <Dependent Role="ETLExportDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLExportEmail_ETLExportDefinition">
+          <End Role="ETLExportDefinition" Type="HUBModel.Store.ETLExportDefinition" Multiplicity="1" />
+          <End Role="ETLExportEmail" Type="HUBModel.Store.ETLExportEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLExportDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Principal>
+            <Dependent Role="ETLExportEmail">
+              <PropertyRef Name="ETLExportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLExportHistory_ETLExportDefinition">
+          <End Role="ETLExportDefinition" Type="HUBModel.Store.ETLExportDefinition" Multiplicity="1" />
+          <End Role="ETLExportHistory" Type="HUBModel.Store.ETLExportHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLExportDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Principal>
+            <Dependent Role="ETLExportHistory">
+              <PropertyRef Name="ETLExportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLExportSchedule_ETLPeriodicity">
+          <End Role="ETLPeriodicity" Type="HUBModel.Store.ETLPeriodicity" Multiplicity="1" />
+          <End Role="ETLExportSchedule" Type="HUBModel.Store.ETLExportSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLPeriodicity">
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="ETLExportSchedule">
+              <PropertyRef Name="ETLExportPeriodicity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLExportTablesDefinition_ETLExportDefinition">
+          <End Role="ETLExportDefinition" Type="HUBModel.Store.ETLExportDefinition" Multiplicity="1" />
+          <End Role="ETLExportTablesDefinition" Type="HUBModel.Store.ETLExportTablesDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLExportDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Principal>
+            <Dependent Role="ETLExportTablesDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLImportEmail_ETLImportDefinition">
+          <End Role="ETLImportDefinition" Type="HUBModel.Store.ETLImportDefinition" Multiplicity="1" />
+          <End Role="ETLImportEmail" Type="HUBModel.Store.ETLImportEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLImportDefinition">
+              <PropertyRef Name="ETLImportGUID" />
+            </Principal>
+            <Dependent Role="ETLImportEmail">
+              <PropertyRef Name="ETLImportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLImportHistory_ETLImportDefinition">
+          <End Role="ETLImportDefinition" Type="HUBModel.Store.ETLImportDefinition" Multiplicity="1" />
+          <End Role="ETLImportHistory" Type="HUBModel.Store.ETLImportHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLImportDefinition">
+              <PropertyRef Name="ETLImportGUID" />
+            </Principal>
+            <Dependent Role="ETLImportHistory">
+              <PropertyRef Name="ETLImportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLImportTablesDefinition_ETLImportDefinition">
+          <End Role="ETLImportDefinition" Type="HUBModel.Store.ETLImportDefinition" Multiplicity="1" />
+          <End Role="ETLImportTablesDefinition" Type="HUBModel.Store.ETLImportTablesDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLImportDefinition">
+              <PropertyRef Name="ETLImportGUID" />
+            </Principal>
+            <Dependent Role="ETLImportTablesDefinition">
+              <PropertyRef Name="ETLImportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ETLModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ETLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ETLExportConfigurations" EntityType="ETLModel.ETLExportConfiguration" />
+          <EntitySet Name="ETLExportDefinitions" EntityType="ETLModel.ETLExportDefinition" />
+          <EntitySet Name="ETLExportHistories" EntityType="ETLModel.ETLExportHistory" />
+          <EntitySet Name="ETLExportSchedules" EntityType="ETLModel.ETLExportSchedule" />
+          <EntitySet Name="ETLExportTablesDefinitions" EntityType="ETLModel.ETLExportTablesDefinition" />
+          <EntitySet Name="ETLPeriodicities" EntityType="ETLModel.ETLPeriodicity" />
+          <AssociationSet Name="FK_ETLExportDefinition_ETLExportSchedule" Association="ETLModel.FK_ETLExportDefinition_ETLExportSchedule">
+            <End Role="ETLExportSchedule" EntitySet="ETLExportSchedules" />
+            <End Role="ETLExportDefinition" EntitySet="ETLExportDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLExportHistory_ETLExportDefinition" Association="ETLModel.FK_ETLExportHistory_ETLExportDefinition">
+            <End Role="ETLExportDefinition" EntitySet="ETLExportDefinitions" />
+            <End Role="ETLExportHistory" EntitySet="ETLExportHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLExportTablesDefinition_ETLExportDefinition" Association="ETLModel.FK_ETLExportTablesDefinition_ETLExportDefinition">
+            <End Role="ETLExportDefinition" EntitySet="ETLExportDefinitions" />
+            <End Role="ETLExportTablesDefinition" EntitySet="ETLExportTablesDefinitions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLExportSchedule_ETLPeriodicity" Association="ETLModel.FK_ETLExportSchedule_ETLPeriodicity">
+            <End Role="ETLPeriodicity" EntitySet="ETLPeriodicities" />
+            <End Role="ETLExportSchedule" EntitySet="ETLExportSchedules" />
+          </AssociationSet>
+          <EntitySet Name="ETLExportEmails" EntityType="ETLModel.ETLExportEmail" />
+          <AssociationSet Name="FK_ETLExportEmail_ETLExportDefinition" Association="ETLModel.FK_ETLExportEmail_ETLExportDefinition">
+            <End Role="ETLExportDefinition" EntitySet="ETLExportDefinitions" />
+            <End Role="ETLExportEmail" EntitySet="ETLExportEmails" />
+          </AssociationSet>
+          <EntitySet Name="ETLImportConfigurations" EntityType="ETLModel.ETLImportConfiguration" />
+          <EntitySet Name="ETLImportDefinitions" EntityType="ETLModel.ETLImportDefinition" />
+          <EntitySet Name="ETLImportEmails" EntityType="ETLModel.ETLImportEmail" />
+          <EntitySet Name="ETLImportHistories" EntityType="ETLModel.ETLImportHistory" />
+          <EntitySet Name="ETLImportTablesDefinitions" EntityType="ETLModel.ETLImportTablesDefinition" />
+          <AssociationSet Name="FK_ETLImportEmail_ETLImportDefinition" Association="ETLModel.FK_ETLImportEmail_ETLImportDefinition">
+            <End Role="ETLImportDefinition" EntitySet="ETLImportDefinitions" />
+            <End Role="ETLImportEmail" EntitySet="ETLImportEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLImportHistory_ETLImportDefinition" Association="ETLModel.FK_ETLImportHistory_ETLImportDefinition">
+            <End Role="ETLImportDefinition" EntitySet="ETLImportDefinitions" />
+            <End Role="ETLImportHistory" EntitySet="ETLImportHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ETLImportTablesDefinition_ETLImportDefinition" Association="ETLModel.FK_ETLImportTablesDefinition_ETLImportDefinition">
+            <End Role="ETLImportDefinition" EntitySet="ETLImportDefinitions" />
+            <End Role="ETLImportTablesDefinition" EntitySet="ETLImportTablesDefinitions" />
+          </AssociationSet>
+          <EntitySet Name="DualAppShortcutSettings" EntityType="ETLModel.DualAppShortcutSetting" />
+          <EntitySet Name="vw_FundsAndProperties" EntityType="ETLModel.vw_FundsAndProperties" />
+        </EntityContainer>
+        <EntityType Name="ETLExportConfiguration">
+          <Key>
+            <PropertyRef Name="ETLExportDirectoryLocation" />
+            <PropertyRef Name="AvailabillityIndicator" />
+          </Key>
+          <Property Name="ETLExportDirectoryLocation" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="AvailabillityIndicator" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETLExportDefinition">
+          <Key>
+            <PropertyRef Name="ETLExportGUID" />
+          </Key>
+          <Property Name="ETLExportGUID" Type="Guid" Nullable="false" />
+          <Property Name="ApplicationDatabase" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Reason" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ETLExportSchedule" Relationship="ETLModel.FK_ETLExportDefinition_ETLExportSchedule" FromRole="ETLExportDefinition" ToRole="ETLExportSchedule" />
+          <NavigationProperty Name="ETLExportHistories" Relationship="ETLModel.FK_ETLExportHistory_ETLExportDefinition" FromRole="ETLExportDefinition" ToRole="ETLExportHistory" />
+          <NavigationProperty Name="ETLExportTablesDefinitions" Relationship="ETLModel.FK_ETLExportTablesDefinition_ETLExportDefinition" FromRole="ETLExportDefinition" ToRole="ETLExportTablesDefinition" />
+          <Property Type="String" Name="ExportName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ExportSubDirectory" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ExportType" Nullable="false" />
+          <NavigationProperty Name="ETLExportEmails" Relationship="ETLModel.FK_ETLExportEmail_ETLExportDefinition" FromRole="ETLExportDefinition" ToRole="ETLExportEmail" />
+          <Property Type="String" Name="StatusProcedureName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ETLExportHistory">
+          <Key>
+            <PropertyRef Name="ETLExportHistoryGUID" />
+          </Key>
+          <Property Name="ETLExportHistoryGUID" Type="Guid" Nullable="false" />
+          <Property Name="ETLExportGUID" Type="Guid" Nullable="false" />
+          <Property Name="ETLExportDate" Type="DateTime" Nullable="false" />
+          <Property Name="ETLExportSubmittedBy" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ETLExportStartDate" Type="DateTime" Nullable="false" />
+          <Property Name="ETLExportEndDate" Type="DateTime" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ETLExportDefinition" Relationship="ETLModel.FK_ETLExportHistory_ETLExportDefinition" FromRole="ETLExportHistory" ToRole="ETLExportDefinition" />
+        </EntityType>
+        <EntityType Name="ETLExportSchedule">
+          <Key>
+            <PropertyRef Name="ETLExportGUID" />
+          </Key>
+          <Property Name="ETLExportGUID" Type="Guid" Nullable="false" />
+          <Property Name="ETLExportStartDate" Type="DateTime" Nullable="false" />
+          <Property Name="ETLExportPeriodicity" Type="Int32" Nullable="false" />
+          <Property Name="ETLTime1" Type="Time" Nullable="false" />
+          <Property Name="ETLTime2" Type="Time" />
+          <Property Name="ETLTime3" Type="Time" />
+          <Property Name="ETLTime4" Type="Time" />
+          <NavigationProperty Name="ETLExportDefinition" Relationship="ETLModel.FK_ETLExportDefinition_ETLExportSchedule" FromRole="ETLExportSchedule" ToRole="ETLExportDefinition" />
+          <NavigationProperty Name="ETLPeriodicity" Relationship="ETLModel.FK_ETLExportSchedule_ETLPeriodicity" FromRole="ETLExportSchedule" ToRole="ETLPeriodicity" />
+        </EntityType>
+        <EntityType Name="ETLExportTablesDefinition">
+          <Key>
+            <PropertyRef Name="ETLExportTableGUID" />
+          </Key>
+          <Property Name="ETLExportGUID" Type="Guid" Nullable="false" />
+          <Property Name="ETLExportTableGUID" Type="Guid" Nullable="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ETLFileName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ETLHeaderName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ETLExportDefinition" Relationship="ETLModel.FK_ETLExportTablesDefinition_ETLExportDefinition" FromRole="ETLExportTablesDefinition" ToRole="ETLExportDefinition" />
+          <Property Type="String" Name="ProcedureName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ETLPeriodicity">
+          <Key>
+            <PropertyRef Name="PeriodID" />
+          </Key>
+          <Property Name="PeriodID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ETLExportSchedules" Relationship="ETLModel.FK_ETLExportSchedule_ETLPeriodicity" FromRole="ETLPeriodicity" ToRole="ETLExportSchedule" />
+        </EntityType>
+        <Association Name="FK_ETLExportDefinition_ETLExportSchedule">
+          <End Role="ETLExportSchedule" Type="ETLModel.ETLExportSchedule" Multiplicity="1" />
+          <End Role="ETLExportDefinition" Type="ETLModel.ETLExportDefinition" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ETLExportSchedule">
+              <PropertyRef Name="ETLExportGUID" />
+            </Principal>
+            <Dependent Role="ETLExportDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLExportHistory_ETLExportDefinition">
+          <End Role="ETLExportDefinition" Type="ETLModel.ETLExportDefinition" Multiplicity="1" />
+          <End Role="ETLExportHistory" Type="ETLModel.ETLExportHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLExportDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Principal>
+            <Dependent Role="ETLExportHistory">
+              <PropertyRef Name="ETLExportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLExportTablesDefinition_ETLExportDefinition">
+          <End Role="ETLExportDefinition" Type="ETLModel.ETLExportDefinition" Multiplicity="1" />
+          <End Role="ETLExportTablesDefinition" Type="ETLModel.ETLExportTablesDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLExportDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Principal>
+            <Dependent Role="ETLExportTablesDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLExportSchedule_ETLPeriodicity">
+          <End Role="ETLPeriodicity" Type="ETLModel.ETLPeriodicity" Multiplicity="1" />
+          <End Role="ETLExportSchedule" Type="ETLModel.ETLExportSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLPeriodicity">
+              <PropertyRef Name="PeriodID" />
+            </Principal>
+            <Dependent Role="ETLExportSchedule">
+              <PropertyRef Name="ETLExportPeriodicity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ETLExportEmail">
+          <Key>
+            <PropertyRef Name="ETLEmailGUID" />
+          </Key>
+          <Property Type="Guid" Name="ETLEmailGUID" Nullable="false" />
+          <Property Type="Guid" Name="ETLExportGUID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Subject" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Body" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAssignees" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CCAssignees" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BCCAssignees" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddress" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ETLExportDefinition" Relationship="ETLModel.FK_ETLExportEmail_ETLExportDefinition" FromRole="ETLExportEmail" ToRole="ETLExportDefinition" />
+          <Property Type="Boolean" Name="EmailIsDataSpecific" Nullable="false" />
+          <Property Type="String" Name="ProcedureName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_ETLExportEmail_ETLExportDefinition">
+          <End Type="ETLModel.ETLExportDefinition" Role="ETLExportDefinition" Multiplicity="1" />
+          <End Type="ETLModel.ETLExportEmail" Role="ETLExportEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLExportDefinition">
+              <PropertyRef Name="ETLExportGUID" />
+            </Principal>
+            <Dependent Role="ETLExportEmail">
+              <PropertyRef Name="ETLExportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ETLImportConfiguration">
+          <Key>
+            <PropertyRef Name="ETLImportDirectoryLocation" />
+            <PropertyRef Name="AvailabillityIndicator" />
+          </Key>
+          <Property Type="String" Name="ETLImportDirectoryLocation" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="AvailabillityIndicator" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ETLImportDefinition">
+          <Key>
+            <PropertyRef Name="ETLImportGUID" />
+          </Key>
+          <Property Type="Guid" Name="ETLImportGUID" Nullable="false" />
+          <Property Type="String" Name="ImportName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ImportSubDirectory" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Reason" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <Property Type="Int32" Name="ImportType" Nullable="false" />
+          <NavigationProperty Name="ETLImportEmails" Relationship="ETLModel.FK_ETLImportEmail_ETLImportDefinition" FromRole="ETLImportDefinition" ToRole="ETLImportEmail" />
+          <NavigationProperty Name="ETLImportHistories" Relationship="ETLModel.FK_ETLImportHistory_ETLImportDefinition" FromRole="ETLImportDefinition" ToRole="ETLImportHistory" />
+          <NavigationProperty Name="ETLImportTablesDefinitions" Relationship="ETLModel.FK_ETLImportTablesDefinition_ETLImportDefinition" FromRole="ETLImportDefinition" ToRole="ETLImportTablesDefinition" />
+        </EntityType>
+        <EntityType Name="ETLImportEmail">
+          <Key>
+            <PropertyRef Name="ETLEmailGUID" />
+          </Key>
+          <Property Type="Guid" Name="ETLEmailGUID" Nullable="false" />
+          <Property Type="Guid" Name="ETLImportGUID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Subject" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Body" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ToAssignees" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CCAssignees" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BCCAssignees" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FromAddress" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="EmailIsDataSpecific" Nullable="false" />
+          <NavigationProperty Name="ETLImportDefinition" Relationship="ETLModel.FK_ETLImportEmail_ETLImportDefinition" FromRole="ETLImportEmail" ToRole="ETLImportDefinition" />
+        </EntityType>
+        <EntityType Name="ETLImportHistory">
+          <Key>
+            <PropertyRef Name="ETLImportHistoryGUID" />
+          </Key>
+          <Property Type="Guid" Name="ETLImportHistoryGUID" Nullable="false" />
+          <Property Type="Guid" Name="ETLImportGUID" Nullable="false" />
+          <Property Type="DateTime" Name="ETLImportDate" Nullable="false" />
+          <Property Type="String" Name="ETLImportSubmittedBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="ETLImportStartDate" Nullable="false" />
+          <Property Type="DateTime" Name="ETLImportEndDate" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <NavigationProperty Name="ETLImportDefinition" Relationship="ETLModel.FK_ETLImportHistory_ETLImportDefinition" FromRole="ETLImportHistory" ToRole="ETLImportDefinition" />
+        </EntityType>
+        <EntityType Name="ETLImportTablesDefinition">
+          <Key>
+            <PropertyRef Name="ETLImportTableGUID" />
+          </Key>
+          <Property Type="Guid" Name="ETLImportGUID" Nullable="false" />
+          <Property Type="Guid" Name="ETLImportTableGUID" Nullable="false" />
+          <Property Type="String" Name="TableName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ETLFileName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ETLHeaderName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ETLImportDefinition" Relationship="ETLModel.FK_ETLImportTablesDefinition_ETLImportDefinition" FromRole="ETLImportTablesDefinition" ToRole="ETLImportDefinition" />
+          <Property Type="String" Name="SelectProcedureName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="InsertProcedureName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="LineDataStarts" Nullable="false" />
+          <Property Type="Int32" Name="FooterLineCount" Nullable="false" />
+          <Property Type="String" Name="DeleteProcedureName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_ETLImportEmail_ETLImportDefinition">
+          <End Type="ETLModel.ETLImportDefinition" Role="ETLImportDefinition" Multiplicity="1" />
+          <End Type="ETLModel.ETLImportEmail" Role="ETLImportEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLImportDefinition">
+              <PropertyRef Name="ETLImportGUID" />
+            </Principal>
+            <Dependent Role="ETLImportEmail">
+              <PropertyRef Name="ETLImportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLImportHistory_ETLImportDefinition">
+          <End Type="ETLModel.ETLImportDefinition" Role="ETLImportDefinition" Multiplicity="1" />
+          <End Type="ETLModel.ETLImportHistory" Role="ETLImportHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLImportDefinition">
+              <PropertyRef Name="ETLImportGUID" />
+            </Principal>
+            <Dependent Role="ETLImportHistory">
+              <PropertyRef Name="ETLImportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ETLImportTablesDefinition_ETLImportDefinition">
+          <End Type="ETLModel.ETLImportDefinition" Role="ETLImportDefinition" Multiplicity="1" />
+          <End Type="ETLModel.ETLImportTablesDefinition" Role="ETLImportTablesDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ETLImportDefinition">
+              <PropertyRef Name="ETLImportGUID" />
+            </Principal>
+            <Dependent Role="ETLImportTablesDefinition">
+              <PropertyRef Name="ETLImportGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DualAppShortcutSetting">
+          <Key>
+            <PropertyRef Name="AppID" />
+            <PropertyRef Name="WindowTitle" />
+            <PropertyRef Name="WindowBackgroundColour" />
+            <PropertyRef Name="WindowBorderColor" />
+            <PropertyRef Name="PrimeButtonBackgroundColor" />
+            <PropertyRef Name="HeaderTextColor" />
+            <PropertyRef Name="PrimeTextColor" />
+            <PropertyRef Name="YardiTextColor" />
+            <PropertyRef Name="HeaderText" />
+            <PropertyRef Name="PrimeButtonText" />
+            <PropertyRef Name="YardiButtonText" />
+            <PropertyRef Name="YardiButtonBackgroundColor" />
+            <PropertyRef Name="YardiButtonEnabled" />
+            <PropertyRef Name="PrimeButtonEnabled" />
+          </Key>
+          <Property Type="Int32" Name="AppID" Nullable="false" />
+          <Property Type="String" Name="WindowTitle" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WindowBackgroundColour" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="WindowBorderColor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimeButtonBackgroundColor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HeaderTextColor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimeTextColor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YardiTextColor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HeaderText" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PrimeButtonText" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YardiButtonText" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="YardiButtonBackgroundColor" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="YardiButtonEnabled" Nullable="false" />
+          <Property Type="Boolean" Name="PrimeButtonEnabled" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_FundsAndProperties">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Migrated" />
+          </Key>
+          <Property Type="String" Name="ID" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="Migrated" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HUBModelStoreContainer" CdmEntityContainer="ETLEntities">
+          <EntitySetMapping Name="ETLExportConfigurations"><EntityTypeMapping TypeName="ETLModel.ETLExportConfiguration"><MappingFragment StoreEntitySet="ETLExportConfiguration">
+            <ScalarProperty Name="ETLExportDirectoryLocation" ColumnName="ETLExportDirectoryLocation" />
+            <ScalarProperty Name="AvailabillityIndicator" ColumnName="AvailabillityIndicator" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ETLExportDefinitions"><EntityTypeMapping TypeName="ETLModel.ETLExportDefinition"><MappingFragment StoreEntitySet="ETLExportDefinition">
+                <ScalarProperty Name="StatusProcedureName" ColumnName="StatusProcedureName" />
+                <ScalarProperty Name="ExportType" ColumnName="ExportType" />
+                <ScalarProperty Name="ExportSubDirectory" ColumnName="ExportSubDirectory" />
+                <ScalarProperty Name="ExportName" ColumnName="ExportName" />
+                <ScalarProperty Name="ETLExportGUID" ColumnName="ETLExportGUID" />
+            <ScalarProperty Name="ApplicationDatabase" ColumnName="ApplicationDatabase" />
+            <ScalarProperty Name="Reason" ColumnName="Reason" />
+            <ScalarProperty Name="Active" ColumnName="Active" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ETLExportHistories"><EntityTypeMapping TypeName="ETLModel.ETLExportHistory"><MappingFragment StoreEntitySet="ETLExportHistory">
+            <ScalarProperty Name="ETLExportHistoryGUID" ColumnName="ETLExportHistoryGUID" />
+            <ScalarProperty Name="ETLExportGUID" ColumnName="ETLExportGUID" />
+            <ScalarProperty Name="ETLExportDate" ColumnName="ETLExportDate" />
+            <ScalarProperty Name="ETLExportSubmittedBy" ColumnName="ETLExportSubmittedBy" />
+            <ScalarProperty Name="ETLExportStartDate" ColumnName="ETLExportStartDate" />
+            <ScalarProperty Name="ETLExportEndDate" ColumnName="ETLExportEndDate" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ETLExportSchedules"><EntityTypeMapping TypeName="ETLModel.ETLExportSchedule"><MappingFragment StoreEntitySet="ETLExportSchedule">
+            <ScalarProperty Name="ETLExportGUID" ColumnName="ETLExportGUID" />
+            <ScalarProperty Name="ETLExportStartDate" ColumnName="ETLExportStartDate" />
+            <ScalarProperty Name="ETLExportPeriodicity" ColumnName="ETLExportPeriodicity" />
+            <ScalarProperty Name="ETLTime1" ColumnName="ETLTime1" />
+            <ScalarProperty Name="ETLTime2" ColumnName="ETLTime2" />
+            <ScalarProperty Name="ETLTime3" ColumnName="ETLTime3" />
+            <ScalarProperty Name="ETLTime4" ColumnName="ETLTime4" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ETLExportTablesDefinitions"><EntityTypeMapping TypeName="ETLModel.ETLExportTablesDefinition"><MappingFragment StoreEntitySet="ETLExportTablesDefinition">
+                <ScalarProperty Name="ProcedureName" ColumnName="ProcedureName" />
+                <ScalarProperty Name="ETLExportGUID" ColumnName="ETLExportGUID" />
+            <ScalarProperty Name="ETLExportTableGUID" ColumnName="ETLExportTableGUID" />
+            <ScalarProperty Name="TableName" ColumnName="TableName" />
+            <ScalarProperty Name="ETLFileName" ColumnName="ETLFileName" />
+            <ScalarProperty Name="ETLHeaderName" ColumnName="ETLHeaderName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ETLPeriodicities"><EntityTypeMapping TypeName="ETLModel.ETLPeriodicity"><MappingFragment StoreEntitySet="ETLPeriodicity">
+            <ScalarProperty Name="PeriodID" ColumnName="PeriodID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ETLExportEmails">
+            <EntityTypeMapping TypeName="ETLModel.ETLExportEmail">
+              <MappingFragment StoreEntitySet="ETLExportEmail">
+                <ScalarProperty Name="ProcedureName" ColumnName="ProcedureName" />
+                <ScalarProperty Name="EmailIsDataSpecific" ColumnName="EmailIsDataSpecific" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="BCCAssignees" ColumnName="BCCAssignees" />
+                <ScalarProperty Name="CCAssignees" ColumnName="CCAssignees" />
+                <ScalarProperty Name="ToAssignees" ColumnName="ToAssignees" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ETLExportGUID" ColumnName="ETLExportGUID" />
+                <ScalarProperty Name="ETLEmailGUID" ColumnName="ETLEmailGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ETLImportConfigurations">
+            <EntityTypeMapping TypeName="ETLModel.ETLImportConfiguration">
+              <MappingFragment StoreEntitySet="ETLImportConfiguration">
+                <ScalarProperty Name="AvailabillityIndicator" ColumnName="AvailabillityIndicator" />
+                <ScalarProperty Name="ETLImportDirectoryLocation" ColumnName="ETLImportDirectoryLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ETLImportDefinitions">
+            <EntityTypeMapping TypeName="ETLModel.ETLImportDefinition">
+              <MappingFragment StoreEntitySet="ETLImportDefinition">
+                <ScalarProperty Name="ImportType" ColumnName="ImportType" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="ImportSubDirectory" ColumnName="ImportSubDirectory" />
+                <ScalarProperty Name="ImportName" ColumnName="ImportName" />
+                <ScalarProperty Name="ETLImportGUID" ColumnName="ETLImportGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ETLImportEmails">
+            <EntityTypeMapping TypeName="ETLModel.ETLImportEmail">
+              <MappingFragment StoreEntitySet="ETLImportEmail">
+                <ScalarProperty Name="EmailIsDataSpecific" ColumnName="EmailIsDataSpecific" />
+                <ScalarProperty Name="FromAddress" ColumnName="FromAddress" />
+                <ScalarProperty Name="BCCAssignees" ColumnName="BCCAssignees" />
+                <ScalarProperty Name="CCAssignees" ColumnName="CCAssignees" />
+                <ScalarProperty Name="ToAssignees" ColumnName="ToAssignees" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ETLImportGUID" ColumnName="ETLImportGUID" />
+                <ScalarProperty Name="ETLEmailGUID" ColumnName="ETLEmailGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ETLImportHistories">
+            <EntityTypeMapping TypeName="ETLModel.ETLImportHistory">
+              <MappingFragment StoreEntitySet="ETLImportHistory">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ETLImportEndDate" ColumnName="ETLImportEndDate" />
+                <ScalarProperty Name="ETLImportStartDate" ColumnName="ETLImportStartDate" />
+                <ScalarProperty Name="ETLImportSubmittedBy" ColumnName="ETLImportSubmittedBy" />
+                <ScalarProperty Name="ETLImportDate" ColumnName="ETLImportDate" />
+                <ScalarProperty Name="ETLImportGUID" ColumnName="ETLImportGUID" />
+                <ScalarProperty Name="ETLImportHistoryGUID" ColumnName="ETLImportHistoryGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ETLImportTablesDefinitions">
+            <EntityTypeMapping TypeName="ETLModel.ETLImportTablesDefinition">
+              <MappingFragment StoreEntitySet="ETLImportTablesDefinition">
+                <ScalarProperty Name="DeleteProcedureName" ColumnName="DeleteProcedureName" />
+                <ScalarProperty Name="FooterLineCount" ColumnName="FooterLineCount" />
+                <ScalarProperty Name="LineDataStarts" ColumnName="LineDataStarts" />
+                <ScalarProperty Name="InsertProcedureName" ColumnName="InsertProcedureName" />
+                <ScalarProperty Name="SelectProcedureName" ColumnName="SelectProcedureName" />
+                <ScalarProperty Name="ETLHeaderName" ColumnName="ETLHeaderName" />
+                <ScalarProperty Name="ETLFileName" ColumnName="ETLFileName" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="ETLImportTableGUID" ColumnName="ETLImportTableGUID" />
+                <ScalarProperty Name="ETLImportGUID" ColumnName="ETLImportGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DualAppShortcutSettings">
+            <EntityTypeMapping TypeName="ETLModel.DualAppShortcutSetting">
+              <MappingFragment StoreEntitySet="DualAppShortcutSettings">
+                <ScalarProperty Name="PrimeButtonEnabled" ColumnName="PrimeButtonEnabled" />
+                <ScalarProperty Name="YardiButtonEnabled" ColumnName="YardiButtonEnabled" />
+                <ScalarProperty Name="YardiButtonBackgroundColor" ColumnName="YardiButtonBackgroundColor" />
+                <ScalarProperty Name="YardiButtonText" ColumnName="YardiButtonText" />
+                <ScalarProperty Name="PrimeButtonText" ColumnName="PrimeButtonText" />
+                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
+                <ScalarProperty Name="YardiTextColor" ColumnName="YardiTextColor" />
+                <ScalarProperty Name="PrimeTextColor" ColumnName="PrimeTextColor" />
+                <ScalarProperty Name="HeaderTextColor" ColumnName="HeaderTextColor" />
+                <ScalarProperty Name="PrimeButtonBackgroundColor" ColumnName="PrimeButtonBackgroundColor" />
+                <ScalarProperty Name="WindowBorderColor" ColumnName="WindowBorderColor" />
+                <ScalarProperty Name="WindowBackgroundColour" ColumnName="WindowBackgroundColour" />
+                <ScalarProperty Name="WindowTitle" ColumnName="WindowTitle" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_FundsAndProperties">
+            <EntityTypeMapping TypeName="ETLModel.vw_FundsAndProperties">
+              <MappingFragment StoreEntitySet="vw_FundsAndProperties">
+                <ScalarProperty Name="Migrated" ColumnName="Migrated" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ETL">
+        <EntityTypeShape EntityType="ETLModel.ETLExportConfiguration" Width="2.125" PointX="0.75" PointY="5.75" Height="1.2636116536458335" IsExpanded="true" />
+        <EntityTypeShape EntityType="ETLModel.ETLExportDefinition" Width="1.875" PointX="5.125" PointY="2.5" Height="2.7427376302083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="ETLModel.ETLExportHistory" Width="2" PointX="7.5" PointY="1.125" Height="2.2496956380208335" IsExpanded="true" />
+        <EntityTypeShape EntityType="ETLModel.ETLExportSchedule" Width="1.75" PointX="2.75" PointY="2.375" Height="2.4140429687499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ETLModel.ETLExportTablesDefinition" Width="2.25" PointX="7.5" PointY="4.125" Height="2.0853483072916665" IsExpanded="true" />
+        <EntityTypeShape EntityType="ETLModel.ETLPeriodicity" Width="1.5" PointX="0.75" PointY="2.875" Height="1.427958984375" IsExpanded="true" />
+        <AssociationConnector Association="ETLModel.FK_ETLExportDefinition_ETLExportSchedule" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.644521484375" />
+          <ConnectorPoint PointX="5.125" PointY="3.644521484375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ETLModel.FK_ETLExportHistory_ETLExportDefinition" ManuallyRouted="false">
+          <ConnectorPoint PointX="7" PointY="2.9373478190104167" />
+          <ConnectorPoint PointX="7.5" PointY="2.9373478190104167" />
+        </AssociationConnector>
+        <AssociationConnector Association="ETLModel.FK_ETLExportTablesDefinition_ETLExportDefinition" ManuallyRouted="false">
+          <ConnectorPoint PointX="7" PointY="4.76604248046875" />
+          <ConnectorPoint PointX="7.5" PointY="4.76604248046875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ETLModel.FK_ETLExportSchedule_ETLPeriodicity" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.5889794921875" />
+          <ConnectorPoint PointX="2.75" PointY="3.5889794921875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ETLModel.ETLExportEmail" Width="2" PointX="5.125" PointY="5.75" Height="2.9070849609374996" />
+        <AssociationConnector Association="ETLModel.FK_ETLExportEmail_ETLExportDefinition" >
+          <ConnectorPoint PointX="6.0625" PointY="5.4070849609375" />
+          <ConnectorPoint PointX="6.0625" PointY="5.75" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ETLModel.ETLImportConfiguration" Width="2.125" PointX="0.875" PointY="9.375" Height="1.2636116536458317" />
+        <EntityTypeShape EntityType="ETLModel.ETLImportDefinition" Width="2" PointX="4.75" PointY="9.75" Height="2.4140429687499996" />
+        <EntityTypeShape EntityType="ETLModel.ETLImportEmail" Width="2" PointX="7.5" PointY="6.625" Height="2.7427376302083353" />
+        <EntityTypeShape EntityType="ETLModel.ETLImportHistory" Width="2.125" PointX="7.5" PointY="10.125" Height="2.2496956380208317" />
+        <EntityTypeShape EntityType="ETLModel.ETLImportTablesDefinition" Width="2.5" PointX="7.5" PointY="13.125" Height="2.2496956380208317" />
+        <AssociationConnector Association="ETLModel.FK_ETLImportEmail_ETLImportDefinition" >
+          <ConnectorPoint PointX="4.90625" PointY="9.75" />
+          <ConnectorPoint PointX="4.90625" PointY="9.0436612955729174" />
+          <ConnectorPoint PointX="7.5" PointY="9.0436612955729174" />
+        </AssociationConnector>
+        <AssociationConnector Association="ETLModel.FK_ETLImportHistory_ETLImportDefinition" >
+          <ConnectorPoint PointX="6.75" PointY="11.144521484375" />
+          <ConnectorPoint PointX="7.5" PointY="11.144521484375" />
+        </AssociationConnector>
+        <AssociationConnector Association="ETLModel.FK_ETLImportTablesDefinition_ETLImportDefinition" >
+          <ConnectorPoint PointX="5.75" PointY="12.16404296875" />
+          <ConnectorPoint PointX="5.75" PointY="14.249847819010416" />
+          <ConnectorPoint PointX="7.5" PointY="14.249847819010416" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ETLModel.DualAppShortcutSetting" Width="2.25" PointX="10.375" PointY="0.75" Height="3.2357796223958388" />
+        <EntityTypeShape EntityType="ETLModel.vw_FundsAndProperties" Width="1.5" PointX="10.375" PointY="4.75" Height="1.4279589843750031" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
