@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8B97CE0F-66D2-47E4-AB4E-65EDEE7CA9AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MGRE.ETL.Email</RootNamespace>
+    <AssemblyName>MGRE.ETL.Email</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PRUPIM.Common.EmailService.Client">
+      <HintPath>..\_dependencies\PRUPIM.Common.EmailService.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="PRUPIM.Common.EmailService.Data">
+      <HintPath>..\_dependencies\PRUPIM.Common.EmailService.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PRUPIM.Common.EmailService.Server">
+      <HintPath>..\_dependencies\PRUPIM.Common.EmailService.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="PruPIM.Common.User.Data">
+      <HintPath>..\_dependencies\PruPIM.Common.User.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PruPIM.Common.User.DataSets, Version=1.1.1.3028, Culture=neutral, PublicKeyToken=828c87a324fab78d">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_dependencies\PruPIM.Common.User.DataSets.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EmailETL.cs" />
+    <Compile Include="ETLData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MGRE.ETL.Application.Data\MGRE.ETL.Application.Data.csproj">
+      <Project>{7C828F97-8314-4E0D-A1A1-0A096EB4DD98}</Project>
+      <Name>MGRE.ETL.Application.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MGRE.ETL.Common\MGRE.ETL.Common.csproj">
+      <Project>{094250E2-F83D-4A8A-9AA4-E2132FB86F02}</Project>
+      <Name>MGRE.ETL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MGRE.ETL.Contracts\MGRE.ETL.Contracts.csproj">
+      <Project>{2C2C4A47-570C-42F9-AEF1-93E62DB74F31}</Project>
+      <Name>MGRE.ETL.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
