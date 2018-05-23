@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9EC0C32D-B4ED-4561-B084-6A0B28993E53}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MGRE.ETL.Web.Service</RootNamespace>
+    <AssemblyName>MGRE.ETL.Web.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=bebcc0a9f985a697">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_dependencies\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="PruPIM.Common.User.Business.Rules">
+      <HintPath>..\_dependencies\PruPIM.Common.User.Business.Rules.dll</HintPath>
+    </Reference>
+    <Reference Include="PruPIM.Common.User.DataSets, Version=1.1.1.3028, Culture=neutral, PublicKeyToken=828c87a324fab78d">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\_dependencies\PruPIM.Common.User.DataSets.dll</HintPath>
+    </Reference>
+    <Reference Include="PruPIM.CSA.AppSecurity.Data">
+      <HintPath>..\_dependencies\PruPIM.CSA.AppSecurity.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="PruPIM.CSA.AppSecurity.DataSets">
+      <HintPath>..\_dependencies\PruPIM.CSA.AppSecurity.DataSets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DualAppService.svc" />
+    <Content Include="ExportService.svc" />
+    <Content Include="ImportService.svc" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthorisedService.cs" />
+    <Compile Include="DualAppService.svc.cs">
+      <DependentUpon>DualAppService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ExportService.svc.cs">
+      <DependentUpon>ExportService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ImportService.svc.cs">
+      <DependentUpon>ImportService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="MGREServerLog.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MGRE.ETL.Business.Rules\MGRE.ETL.Business.Rules.csproj">
+      <Project>{E2649E73-81E1-4245-B1D6-1D105A9CFD4B}</Project>
+      <Name>MGRE.ETL.Business.Rules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MGRE.ETL.Common\MGRE.ETL.Common.csproj">
+      <Project>{094250E2-F83D-4A8A-9AA4-E2132FB86F02}</Project>
+      <Name>MGRE.ETL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MGRE.ETL.Contracts\MGRE.ETL.Contracts.csproj">
+      <Project>{2C2C4A47-570C-42F9-AEF1-93E62DB74F31}</Project>
+      <Name>MGRE.ETL.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MGRE.ETL.Data.Contracts\MGRE.ETL.Data.Contracts.csproj">
+      <Project>{88EFF33D-3135-4CAA-A7D6-54A60C4D6E60}</Project>
+      <Name>MGRE.ETL.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MGRE.ETL.Data\MGRE.ETL.Data.csproj">
+      <Project>{895D7AA0-77B6-4420-8934-D2C16AC69565}</Project>
+      <Name>MGRE.ETL.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MGRE.ETL.Service\MGRE.ETL.Service.csproj">
+      <Project>{F493FAC9-264A-444C-A6CC-42D2524A350A}</Project>
+      <Name>MGRE.ETL.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1736</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <EnableWcfTestClientForSVCDefaultValue>True</EnableWcfTestClientForSVCDefaultValue>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

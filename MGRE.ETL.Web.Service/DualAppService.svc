@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MGRE.ETL.Web.Service.DualAppService" CodeBehind="DualAppService.svc.cs" %>
